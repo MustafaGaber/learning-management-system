@@ -1,0 +1,48 @@
+<div class="container px-2 pb-2">
+    <div class="row m-0">
+        <div class="col"></div>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button class="mx-2 mt-1" checked="true" value="1">Not delivered</mat-radio-button>
+            <mat-radio-button class="mx-2 mt-1" value="2">All</mat-radio-button>
+        </mat-radio-group> 
+    </div>
+    <div class="row m-0">
+        <ng-container *ngFor="let assignment of assignments">
+            <div *ngIf="assignment.delivering" class="col-12 m-2 p-0">
+                <mat-card>
+                    <h6>{{assignment.title}}</h6>
+                    <mat-card-subtitle>{{assignment.date}}</mat-card-subtitle>
+                    <div>{{assignment.content}}</div>
+                    <mat-form-field class="mt-2 w-100">
+                        <textarea matInput placeholder="Your answer"></textarea>
+                    </mat-form-field>
+                    <div class="row">
+                        <div class="col-auto">
+                            <mat-icon class="mr-2 pointer" aria-hidden="true" matTooltip="Attach an image">image
+                            </mat-icon>
+                            <mat-icon class="mx-2 pointer" aria-hidden="true" matTooltip="Attach a video">videocam
+                            </mat-icon>
+                            <mat-icon class="mx-2 pointer" aria-hidden="true" matTooltip="Attach a file">attach_file
+                            </mat-icon>
+                        </div>
+                    </div>
+                    <mat-card-actions>
+                        <button class="mx-1" (click)="saveAssignment(assignment)" color='accent' mat-raised-button>
+                            Save</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div *ngIf="!assignment.delivering" class="col-md-4 m-2 p-0">
+                <mat-card>
+                    <h6>{{assignment.title}}</h6>
+                    <mat-card-subtitle>{{assignment.date}}</mat-card-subtitle>
+                    <div class="limited-content">{{assignment.content}}</div>
+                    <mat-card-actions>
+                        <button class="mx-1" (click)="deliverAssignment(assignment)" color='accent' mat-raised-button>Deliver
+                            Homework</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </ng-container>
+    </div>
+</div>

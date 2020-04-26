@@ -1,0 +1,26 @@
+<div class="container h-100 py-3">
+    <mat-nav-list>
+        <ng-container *ngFor="let section of contents">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header class="border-bottom" collapsedHeight="50px" expandedHeight="50px">
+                    <span>{{section.name}}</span>
+                    <span class="spacer"></span>
+                    <mat-icon *ngIf="section.allSeen" aria-hidden="false" color="accent" aria-label="seen">done
+                    </mat-icon>
+                    <span class="mx-2 length-label">{{section.totalLength}}</span>
+                </mat-expansion-panel-header>
+                <mat-nav-list class="bg-light border-top">
+                    <ng-container *ngFor="let video of section.videos">
+                        <a class="text-dark font-weight-light border-bottom" mat-list-item (click)="openVideo(section, video)">
+                            <span>{{video.name}}</span>
+                            <span class="spacer"></span>
+                            <mat-icon *ngIf="video.seen" aria-hidden="false" color="accent" aria-label="seen">done
+                            </mat-icon>
+                            <span class="mx-2 length-label">{{video.length}}</span>
+                        </a>
+                    </ng-container>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </ng-container>
+    </mat-nav-list>
+</div>

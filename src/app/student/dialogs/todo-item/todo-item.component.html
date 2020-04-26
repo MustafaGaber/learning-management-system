@@ -1,0 +1,12 @@
+<div>
+    <h1 mat-dialog-title>{{data.action === 'edit' ? 'Edit' : 'Add'}} Todo Item</h1>
+    <mat-dialog-content>
+        <mat-form-field class="w-100">
+            <input matInput [(ngModel)]="content" />
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <div class="text-center">
+        <button mat-raised-button color="accent" (click)="submit()">OK</button>
+    </div>
+</div>

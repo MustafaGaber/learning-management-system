@@ -1,0 +1,28 @@
+<mat-drawer-container class="h-100">
+    <mat-drawer mode="side" [opened]="largeScreen">
+        <app-side-nav url="courses"></app-side-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header title="My courses"></app-header>
+        <div class="contianer">
+            <div class="row m-0 align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 p-0" *ngFor="let course of courses">
+                    <mat-card (click)="openCourse(course)" class="m-2 pointer">
+                        <div class="row align-items-center">
+                            <div class="col p-0"></div>
+                            <div class="col-auto text-center pr-0">{{course.name}}</div>
+                            <div class="col">
+                                <img class="course-icon" src="../../../assets/imgs/{{course.icon}}.png"/>
+                            </div>
+                            <!--div class="col-auto text-center" *ngIf="course.name === 'Science'">
+                                <div><mat-icon aria-hidden="false" color='warn' aria-label="live">ondemand_video</mat-icon></div>
+                                <div class="text-lighter">Live now</div>
+                            </div-->
+                            <div class="col p-0"></div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

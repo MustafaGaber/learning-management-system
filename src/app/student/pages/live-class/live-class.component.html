@@ -1,0 +1,101 @@
+<div class="minh-100">
+    <app-header title="Science live class" hideLive="true"></app-header>
+    <div>
+        <div class="row bg-dark m-0">
+            <div class="col p-0">
+                <div id="agora_local" class="stream user-img-bg"> </div>
+                <div class="controls py-1" *ngIf="initialized">
+                    <div class="row m-0 justify-content-center">
+                        <div *ngIf="cameraOn" (click)="stopCamera()" class="col-auto text-center pointer">
+                            <mat-icon color="accent" aria-hidden="true" aria-label="camera">videocam</mat-icon>
+                            <div class="text-light">
+                                Trun off
+                            </div>
+                        </div>
+                        <div *ngIf="!cameraOn" (click)="startCamera()" class="col-auto text-center pointer">
+                            <mat-icon color="accent" aria-hidden="true" aria-label="camera">videocam_off</mat-icon>
+                            <div class="text-light">
+                                Trun on
+                            </div>
+                        </div>
+                        <div *ngIf="micOn" (click)="stopMic()" class="col-auto text-center pointer">
+                            <mat-icon color="accent" aria-hidden="true" aria-label="camera">mic</mat-icon>
+                            <div class="text-light">
+                                Trun off
+                            </div>
+                        </div>
+                        <div *ngIf="!micOn" (click)="startMic()" class="col-auto text-center pointer">
+                            <mat-icon color="accent" aria-hidden="true" aria-label="camera">mic_off</mat-icon>
+                            <div class="text-light">
+                                Trun on
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngFor='let stream of remoteStreams' class="col p-0">
+                <div class="stream" id="{{stream}}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button class="my-2" mat-button (click)="addComment()">{{commenting ? 'Cancel' : 'Add a comment'}}</button>
+        <div *ngIf="commenting" class="mb-2">
+            <mat-form-field class="mt-2 w-100">
+                <textarea [(ngModel)]="comment" matInput placeholder="Type your comment"></textarea>
+            </mat-form-field>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-auto">
+                    <mat-icon (click)="sendComment()" class="pointer" aria-hidden="true" aria-label="send">
+                        send</mat-icon>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngFor="let comment of comments">
+            <mat-divider></mat-divider>
+            <div>
+                <div class="row py-3">
+                    <div class="col-auto">
+                        <img [src]='comment.img' class="tiny-profile-img" />
+                    </div>
+                    <div class="col">
+                        <div class="text-secondary">{{comment.name}}</div>
+                        <div class="text-muted font-weight-lighter">{{comment.date}}</div>
+                        <div class="py-2">
+                            {{comment.content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+
+<!--div class="h-100 bg-dark">
+    <div class="continer h-100 d-flex flex-column">
+        <div class="flex-grow-1">
+            <div id="agora_local" class="w-100 h-100"> </div>
+            <div class="w-100 controls">
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <mat-icon color="accent" aria-hidden="true" aria-label="camera">videocam_off</mat-icon>
+                        <div></div>
+                    </div>
+                    <div class="col-auto">
+                        <mat-icon color="accent" aria-hidden="true" aria-label="camera">mic_off</mat-icon>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <iframe class="w-100 h-100" allowfullscreen src="https://www.youtube-nocookie.com/embed/Qph7iTqJwXM?autoplay=1&showinfo=0&controls=0&iv_load_policy=3">
+            </iframe>
+</div>
+<div class="row m-0 streams">
+    <div *ngFor='let stream of remoteStreams' class="col-auto p-0">
+        <div class="stream" id="{{stream}}"></div>
+    </div>
+</div>
+</div>
+</div-->

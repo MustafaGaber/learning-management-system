@@ -1,0 +1,49 @@
+<div class="container px-2 pb-2">
+    <div class="row m-0">
+        <div class="col"></div>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button class="mx-2 mt-1" checked="true" value="1">Not solved</mat-radio-button>
+            <mat-radio-button class="mx-2 mt-1" value="2">All</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="row m-0">
+        <ng-container *ngFor="let quiz of quizes">
+            <div *ngIf="quiz.solving" class="col-12 m-2 p-0">
+                <mat-card>
+                    <h6>{{quiz.title}}</h6>
+                    <mat-card-subtitle>{{quiz.date}}</mat-card-subtitle>
+                    <mat-card-subtitle>Estimated Time: {{quiz.estimatedTime}}</mat-card-subtitle>
+                    <ng-container *ngFor="let question of quiz.questions, let i = index">
+                        <div class="text-secondary pt-2">
+                            {{i+1}} - {{question.content}}
+                        </div>
+                        <div class="mt-2 mb-3 mx-2">
+                            <mat-radio-group aria-label="Select an answer">
+                                <div *ngFor="let answer of question.answers">
+                                    <mat-radio-button class="mx-2 mt-1 font-italic" [value]="i">
+                                        {{answer}}</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </ng-container>
+                    <mat-card-actions>
+                        <button class="mx-1" (click)="saveQuiz(quiz)" color='accent' mat-raised-button>
+                            Save</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <div *ngIf="!quiz.solving" class="col-md-4 m-2 p-0">
+                <mat-card>
+                    <h6>{{quiz.title}}</h6>
+                    <mat-card-subtitle>{{quiz.date}}</mat-card-subtitle>
+                    <mat-card-subtitle>Estimated Time: {{quiz.estimatedTime}}</mat-card-subtitle>
+                    <mat-card-actions>
+                        <button class="mx-1" (click)="solveQuiz(quiz)" color='accent' mat-raised-button>Start
+                            Quiz</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </ng-container>
+    </div>
+</div>

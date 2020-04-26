@@ -1,1 +1,140 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  min-height: 100% !important;
+}
+.mat-badge-content{ transition: none !important; }
+
+.student-badge {
+  object-fit: contain;
+  width: 40px;
+  height: 40px;
+}
+
+.bg-white {
+  background: white;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #f5f5f5;
+  //background: url('assets/imgs/bg.jpg');
+  //background-size: 300px 300px;
+}
+.mat-tab-body-wrapper, .mat-tab-body-content {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scroll::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+.mat-tab-body-wrapper::-webkit-scrollbar, .mat-tab-body-content::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.bg-light {
+  background: #f5f5f5 !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #aaa;
+}
+
+.border-top {
+  border-top: 1px solid #aaa;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.small-icon {
+  font-size: 20px;
+}
+.profile-img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 1px 3px #888;
+  object-fit: cover;
+}
+
+.small-profile-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+.tiny-profile-img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.container {
+  min-height: 100%;
+}
+
+iframe {
+  border: none !important;
+}
+
+.minh-100 {
+  min-height: 100% !important;
+}
+
+.mat-tab-body-wrapper {
+  height: 100%;
+}
+
+.mat-tab-label .mat-tab-label-content {
+  font-size: 12px !important;
+  padding: 8px !important;
+}
+
+.limited-content-wrapper {
+  height: 50px;
+}
+.limited-content {
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+textarea {
+  background: #f5f5f5 !important;
+  min-height: 100px;
+}
+.border {
+  border: 1px solid #aaa;
+}
+.video-container {
+  // height: auto !important;
+}
+
+#agora_local {
+  position: relative;
+}
+
+.mat-tab-label {
+  padding: 8px !important;
+  min-width: 100px !important;
+}
+
+.mat-list-base {
+  padding-top: 0px !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0px !important;
+}

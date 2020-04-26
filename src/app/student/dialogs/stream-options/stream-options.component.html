@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-auto">
+        <mat-icon color="primary" aria-hidden="true" aria-label="camera">videocam</mat-icon>
+    </div>
+    <div class="col py-0">Trun on your camera</div>
+    <div class="col-auto">
+        <mat-slide-toggle [(ngModel)]="cameraOn"></mat-slide-toggle>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-auto">
+        <mat-icon color="primary" aria-hidden="true" aria-label="camera">mic</mat-icon>
+    </div>
+    <div class="col py-0">Trun on your mic</div>
+    <div class="col-auto">
+        <mat-slide-toggle [(ngModel)]="micOn"></mat-slide-toggle>
+    </div>
+</div>
+<div class="text-center mt-2">
+    <button mat-raised-button (click)="submit()" color="accent">OK</button>
+</div>

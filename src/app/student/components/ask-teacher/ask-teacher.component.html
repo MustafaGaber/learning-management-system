@@ -1,0 +1,21 @@
+<div class="p-2">
+    <div class="text-secondary">Type your question and a teacher will answer you as soon as possible</div>
+    <mat-form-field class="mt-2 w-100">
+        <textarea [(ngModel)]="question" matInput placeholder="Your question"></textarea>
+    </mat-form-field>
+    <div class="row m-0">
+        <div class="col"></div>
+        <div class="col-auto">
+            <mat-icon class="mx-2 pointer" aria-hidden="true" matTooltip="Attach an image">image
+            </mat-icon>
+            <mat-icon class="mx-2 pointer" aria-hidden="true" matTooltip="Attach a video">videocam
+            </mat-icon>
+            <mat-icon (click)="send()" class="pointer mx-2" matTooltip="Send">send</mat-icon>
+        </div>
+    </div>
+    <mat-card class="my-1" *ngIf="questions.length">
+        <div *ngFor="let q of questions">
+            {{q}}
+        </div>
+    </mat-card>
+</div>

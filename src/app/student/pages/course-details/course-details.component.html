@@ -1,0 +1,30 @@
+<mat-drawer-container class="h-100">
+    <mat-drawer [opened]="largeScreen" mode="side">
+        <app-side-nav url='course-details'></app-side-nav>
+    </mat-drawer>
+    <mat-drawer-content class="h-100">
+        <app-header [title]='course.name'></app-header>
+        <mat-tab-group class="h-100" [selectedIndex]="selectedTabIndex || 0">
+            <mat-tab class="h-100" label="Content">
+                <app-course-content></app-course-content>
+            </mat-tab>
+            <mat-tab label="Posts" class="hide-scroll">
+                <app-course-posts></app-course-posts>
+            </mat-tab>
+            <mat-tab label="Homework">
+                <app-course-assignments></app-course-assignments>
+            </mat-tab>
+            <mat-tab label="Quizzes">
+                <app-course-quizes></app-course-quizes>
+            </mat-tab>
+
+            <mat-tab label="Resources">
+                <app-course-resources></app-course-resources>
+            </mat-tab>
+
+            <mat-tab label="Ask Teacher">
+                <app-ask-teacher></app-ask-teacher>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-drawer-content>
+</mat-drawer-container>

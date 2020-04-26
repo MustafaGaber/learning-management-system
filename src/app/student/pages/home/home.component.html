@@ -1,0 +1,47 @@
+<mat-drawer-container class="h-100">
+    <mat-drawer mode="side" [opened]="largeScreen">
+        <app-side-nav url=""></app-side-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header title="Home"></app-header>
+        <div class="p-3">
+            <ng-container *ngIf="!largeScreen">
+                <div class="row py-2" routerLink='courses'>
+                    <div class="col-auto">
+                        <mat-icon aria-hidden="true" aria-label="courses">menu_book</mat-icon>
+                    </div>
+                    <div class="col-auto px-1 text-danger">My courses</div>
+                </div>
+                <mat-divider></mat-divider>
+            </ng-container>
+            <div class="d-flex flex-row align-items-center py-3">
+                <mat-icon class="pointer mr-2" matTooltip="Go to class" routerLink='live' aria-hidden="true"
+                    color='warn'>ondemand_video</mat-icon>
+                <div class="text-danger">
+                    Science class is live now &nbsp; <a class="link" routerLink='live'>Go to class</a>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="py-3">
+                <div class="text-danger pb-1">Undelivered homework</div>
+                <div class="pb-1 font-weight-lighter link pointer" (click)="openAssignment('Science')">Science
+                    Homework 21/4/2020</div>
+                <div class="pb-1 font-weight-lighter link pointer" (click)="openAssignment('English')">English
+                    Homework 22/4/2020</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="py-3">
+                <div class="text-danger pb-1">New quizzes</div>
+                <div class="pb-1 font-weight-lighter link pointer" (click)="openQuiz()">Science: Chapter 1 Quiz
+                    22/4/2020</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="py-3">
+                <div class="text-danger pb-1">Upcoming live classes</div>
+                <div class="pb-1 font-weight-lighter">Math Class at 5:00pm</div>
+                <div class="pb-1 font-weight-lighter">History Class at 7:30pm</div>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

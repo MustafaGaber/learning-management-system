@@ -1,0 +1,82 @@
+<app-header [title] = "selectedVideoName"></app-header>
+<div class="container p-0 bg-light d-flex">
+    <div class="row m-0 flex-grow-1">
+        <div class="col-md-8 p-0">
+            <iframe id='iframe' src="https://www.youtube.com/embed/YKZv9bsFD3w"></iframe>
+            <div class="p-2">
+                <button class="my-2" mat-button
+                    (click)="addComment()">{{commenting ? 'Cancel' : 'Add a comment'}}</button>
+                <div *ngIf="commenting" class="mb-2">
+                    <mat-form-field class="mt-2 w-100">
+                        <textarea [(ngModel)]="comment" matInput placeholder="Type your comment"></textarea>
+                    </mat-form-field>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-auto">
+                            <mat-icon (click)="sendComment()" class="pointer" aria-hidden="true" aria-label="send">
+                                send</mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngFor="let comment of comments">
+                    <mat-divider></mat-divider>
+                    <div>
+                        <div class="row py-3">
+                            <div class="col-auto">
+                                <img [src]='comment.img' class="tiny-profile-img" />
+                            </div>
+                            <div class="col">
+                                <div class="text-secondary">{{comment.name}}</div>
+                                <div class="text-muted font-weight-lighter">{{comment.date}}</div>
+                                <div class="py-2">
+                                    {{comment.content}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="col-md-4 p-0 bg-white">
+            <div routerLink="/course-details" class="row m-0 pointer align-items-center bg-light border-top">
+                <div *ngIf="course" 
+                    class="col-auto pl-3 pr-0 py-4 text-secondary">
+                    {{course.name}} Course
+                </div>
+                <div class="col p-0"></div>
+                <!--div class="col-auto">
+                    <mat-icon class="pointer" matTooltip="Home" routerLink="" aria-hidden="true">home</mat-icon>
+                </div-->
+            </div>
+
+            <mat-nav-list>
+                <ng-container *ngFor="let section of contents">
+                    <mat-expansion-panel [expanded]="section.id === selectedSectionId">
+                        <mat-expansion-panel-header class="border-bottom" collapsedHeight="50px" expandedHeight="50px">
+                            <span>{{section.name}}</span>
+                            <span class="spacer"></span>
+                            <mat-icon *ngIf="section.allSeen" aria-hidden="false" color="accent" aria-label="seen">done
+                            </mat-icon>
+                            <span class="mx-2 length-label">{{section.totalLength}}</span>
+                        </mat-expansion-panel-header>
+                        <mat-nav-list class="bg-light border-top">
+                            <ng-container *ngFor="let video of section.videos">
+                                <a [style.background]="section.id === selectedSectionId && video.id === selectedVideoId ? '#eee' : '#fafafa'"
+                                    class="text-dark font-weight-light border-bottom" mat-list-item
+                                    (click)="openVideo(section, video)">
+                                    <span>{{video.name}}</span>
+                                    <span class="spacer"></span>
+                                    <mat-icon *ngIf="video.seen" aria-hidden="false" color="accent" aria-label="seen">
+                                        done
+                                    </mat-icon>
+                                    <span class="mx-2 length-label">{{video.length}}</span>
+                                </a>
+                            </ng-container>
+                        </mat-nav-list>
+                    </mat-expansion-panel>
+                </ng-container>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>
