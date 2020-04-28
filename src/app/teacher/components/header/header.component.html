@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <div *ngIf="title">{{title}}</div>
+    <span class="spacer"></span>
+    <mat-icon class="px-4 pointer" matTooltip="Home" (click)="navigateTo('home')" aria-hidden="true">home</mat-icon>
+    <mat-icon class="px-4 pointer" [matMenuTriggerFor]="chatMenu" matTooltip="Messages" aria-hidden="true">chat
+    </mat-icon>
+    <mat-icon [matMenuTriggerFor]="notificationsMenu" class="px-4 pointer" [matBadge]="notificationiBadges"
+        matBadgeColor="warn" matBadgePosition="above after" matTooltip="Notifications" aria-hidden="true"
+        (click)="clearNotificationBadges()">notifications</mat-icon>
+    <mat-icon class="px-4 pointer" [matMenuTriggerFor]="accountMenu" matTooltip="My Account" aria-hidden="true">person
+    </mat-icon>
+    <mat-menu #notificationsMenu="matMenu" yPosition="below">
+        <div mat-menu-item>No new notifications</div>
+    </mat-menu>
+    <mat-menu #chatMenu="matMenu" yPosition="below">
+        <div mat-menu-item>No new messages</div>
+    </mat-menu>
+    <mat-menu #accountMenu="matMenu" yPosition="below">
+        <div mat-menu-item (click)="logout()">Logout</div>
+    </mat-menu>
+</mat-toolbar>

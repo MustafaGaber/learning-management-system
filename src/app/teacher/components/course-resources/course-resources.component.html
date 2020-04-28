@@ -1,0 +1,19 @@
+<button class="mt-2" mat-button color="accent" (click)="addResource()">Add Resource</button>
+
+<div *ngFor="let file of files, let i = index">
+    <div class="row m-0 p-2 align-items-center">
+        <div class="col-auto p-1">
+            <mat-icon aria-hidden="true" color="warn" aria-label="pdf">picture_as_pdf</mat-icon>
+        </div>
+        <div class="col p-1 text-secondary">
+            {{file}}
+        </div>
+        <div class="col-auto p-1">
+            <mat-icon aria-hidden="true" (click)="deleteResource(file)" class="pointer" matTooltip="Delete file">delete</mat-icon>
+        </div>
+        <div class="col-auto p-1">
+            <mat-icon aria-hidden="true" class="pointer" matTooltip="Download file">cloud_download</mat-icon>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>

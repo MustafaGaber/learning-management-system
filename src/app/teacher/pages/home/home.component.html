@@ -1,0 +1,61 @@
+<mat-drawer-container class="h-100">
+    <mat-drawer mode="side" [opened]="largeScreen">
+        <app-side-nav url=""></app-side-nav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header title="Home"></app-header>
+        <div class="p-3">
+            <ng-container *ngIf="!largeScreen">
+                <div class="row py-2" routerLink='/teacher/courses'>
+                    <div class="col-auto">
+                        <mat-icon aria-hidden="true">menu_book</mat-icon>
+                    </div>
+                    <div class="col-auto px-1 text-danger">My courses</div>
+                </div>
+                <mat-divider></mat-divider>
+            </ng-container>
+            <div class="pb-2">
+                <div class="pb-1 font-weight-lighter text-danger link pointer" (click)="openAssignment()">
+                    <strong>Ahmed Hassan, Grade 12</strong> delivered a new homework
+                </div>
+                <div class="pb-1 font-weight-lighter text-danger link pointer" (click)="openAssignment()">
+                    <strong>Mohamed Ali, Grade 12 </strong>delivered a new homework
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <!--div class="py-3">
+                <div class="pb-1 font-weight-lighter link pointer" (click)="openQuiz()">Science: Chapter 1 Quiz
+                    22/4/2020</div>
+            </div>
+            <mat-divider></mat-divider-->
+            
+            <div class="row m-0 pt-3">
+                <div class="col-md-6 p-0">
+                    <mat-card class="pt-0" >
+                        <div class="row p-2 align-items-center bg-light">
+                            <div class="col-auto">
+                                My Todo List
+                            </div>
+                            <div class="col"></div>
+                            <div class="col-auto mr-3">
+                                <mat-icon (click)="add()" class="pointer">add</mat-icon>
+                            </div>
+                        </div>
+                        <mat-list role="list" *ngIf="items.length">
+                            <mat-list-item *ngFor="let item of items" role="listitem">
+                                <span mat-line> {{item.content}} </span>
+                                <button mat-icon-button [matTooltip]="item.done ? 'Mark as not done' : 'Mark as done'"
+                                    (click)="toggleDone(item)">
+                                    <mat-icon [color]="item.done ? 'accent' : ''" class="mat-24">done</mat-icon>
+                                </button>
+                                <button mat-icon-button matTooltip="Delete item" (click)="delete(item)">
+                                    <mat-icon class="mat-24">delete</mat-icon>
+                                </button>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card>
+                </div>   
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -20,7 +20,7 @@ export class CoursePostsComponent implements OnInit {
   }
 
   comment(post) {
-    post.commenting = true;
+    post.commenting = !post.commenting;
   }
 
   addPost() {

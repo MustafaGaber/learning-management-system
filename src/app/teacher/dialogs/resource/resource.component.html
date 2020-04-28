@@ -1,0 +1,17 @@
+<div>
+    <h1 mat-dialog-title>{{data.action === 'edit' ? 'Edit' : 'Add'}} Resource</h1>
+    <div class="mb-2 p-0">
+        <button mat-button>Browse</button>
+    </div>
+    <mat-dialog-content>
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Resource Name" [(ngModel)]="name" />
+        </mat-form-field>
+    </mat-dialog-content>
+   
+
+    <div class="text-center">
+        <button mat-raised-button class="mx-1" color="accent" (click)="submit()">OK</button>
+        <button mat-raised-button class="mx-1" color="accent" (click)="dismiss()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container p-2">
+    <div *ngIf="!deliveredOpened">
+        <button class="mt-2" mat-button color="accent" (click)="addAssignment()">Add New Homework</button>
+        <div class="row m-0">
+            <ng-container *ngFor="let assignment of assignments">
+                <div class="col-md-4 m-2 p-0">
+                    <mat-card>
+                        <h6>{{assignment.title}}</h6>
+                        <mat-card-subtitle>{{assignment.date}}</mat-card-subtitle>
+                        <div class="limited-content">{{assignment.content}}</div>
+                        <mat-card-actions>
+                            <button class="mx-1" (click)="openDelivered(assignment)" color='accent' mat-button>
+                                {{assignment.deliveredNum || 0}} Delivered
+                                <span *ngIf="assignment.newDeliveredNum">, {{assignment.newDeliveredNum}} new</span>
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="deliveredOpened" class="p-2">
+        <div class="pb-3 text-secondary font-weight-bold row">
+            <div class="col-auto">
+                <mat-icon (click)="back()" class="pointer">arrow_back</mat-icon>
+            </div>
+            <div class="col">
+                {{currentAssignment.content}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="pt-2" *ngIf="!currentAssignment.delivered">No delivered homeworks</div>
+        <ng-container *ngFor="let assignment of currentAssignment.delivered">
+            <div class="pb-1">
+                <div class="row py-3">
+                    <div class="col-auto">
+                        <img [src]='assignment.img' class="tiny-profile-img" />
+                    </div>
+                    <div class="col">
+                        <div class="text-secondary my-2">{{assignment.name}}</div>
+                        <div *ngIf="assignment.content.text" class="py-2">
+                            {{assignment.content.text}}
+                        </div>
+                        <div *ngIf="assignment.content.imgs" class="py-2">
+                            <img *ngFor="let img of assignment.content.imgs" [src]="img" class="homework-img" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 p-1">
+                    <div class="col-auto p-0">
+                        <button matTooltip="Mark as Accepted" [color]="assignment.accepted ? 'accent' : ''" mat-button
+                            (click)="markAccepted(assignment)">
+                            Accepted
+                        </button>
+                    </div>
+                    <div class="col-auto p-0">
+                        <button matTooltip="Mark as refused" [color]="assignment.refused ? 'accent' : ''" mat-button
+                            (click)="markRefused(assignment)">
+                            Refused
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <div>
+            <button mat-button color="accent" (click)="back()">Back</button>
+        </div>
+    </div>
+</div>

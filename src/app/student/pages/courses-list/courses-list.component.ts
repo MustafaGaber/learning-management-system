@@ -9,29 +9,22 @@ import { Router } from '@angular/router';
 })
 export class CoursesListComponent implements OnInit {
 
-  courses = [
-    {name: 'Science', id: '1', icon: 'science'},
-    {name: 'Math', id: '2', icon: 'math'},
-    {name: 'English', id: '3', icon: 'english'},
-    {name: 'Arabic', id: '4', icon: 'arabic'},
-    {name: 'Arts', id: '5', icon: 'arts'},
-    {name: 'History', id: '6', icon: 'history'},
-    {name: 'Geography', id: '7', icon: 'geography'},
-    {name: 'Philosophy', id: '8', icon: 'philosophy'},
-  ];
+  courses: any[] = [];
   largeScreen = window.innerWidth  >= 600;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.largeScreen = event.target.innerWidth >= 600;
   }
-  constructor(private coursesService: CoursesService, private router: Router) { }
+  constructor(private coursesService: CoursesService, private router: Router) {
+    this.courses = coursesService.courses;
+   }
 
   ngOnInit() {
   }
 
   openCourse(course) {
     this.coursesService.setCurrentCourse(course);
-    this.router.navigateByUrl('course-details');
+    this.router.navigate(['student', 'course-details']);
   }
 }

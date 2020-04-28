@@ -19,15 +19,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    MatButtonModule
   ],
   declarations: [
-  ],
+  LoginComponent],
   exports: [
     CommonModule,
+    FormsModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -42,11 +46,11 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    FormsModule,
     MatSlideToggleModule,
     MatBadgeModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

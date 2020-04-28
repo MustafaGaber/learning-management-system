@@ -12,7 +12,6 @@ export class CourseDetailsComponent implements OnInit {
   course;
   selectedTabIndex;
   largeScreen = window.innerWidth  >= 600;
-
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.largeScreen = event.target.innerWidth >= 600;
@@ -22,7 +21,7 @@ export class CourseDetailsComponent implements OnInit {
     coursesService.selectedIndex = null;
     this.course = coursesService.getCurrentCourse();
     if (!this.course) {
-      this.router.navigateByUrl('courses');
+      this.router.navigate(['student', 'courses']);
     }
   }
 

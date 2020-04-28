@@ -23,6 +23,7 @@ import { TodoItemComponent } from './dialogs/todo-item/todo-item.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'courses', component: CoursesListComponent, },
   { path: 'player', component: PlayerComponent, },
   { path: 'course-details', component: CourseDetailsComponent, },

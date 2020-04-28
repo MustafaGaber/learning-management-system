@@ -43,8 +43,8 @@ export class TodoComponent implements OnInit {
           content: result,
           done: false
         });
+        this.items = this.todoService.todoList;
       }
-      console.log(result);
     });
   }
 

@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateTo(url) {
-    this.router.navigateByUrl(url);
+    this.router.navigate(['student', url]);
   }
 
   ngOnDestroy() {
@@ -31,5 +31,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   clearNotificationBadges() {
     this.notificationiBadges = null;
     this.badgesService.notificationiBadges = null;
+  }
+
+  logout() {
+    this.router.navigate(['']);
   }
 }

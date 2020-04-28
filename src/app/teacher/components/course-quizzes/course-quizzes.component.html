@@ -1,0 +1,119 @@
+<div class="p-2">
+    <div *ngIf="addingQuiz">
+        <div class="pb-3 text-secondary font-weight-bold row">
+            <div class="col-auto">
+                <mat-icon (click)="back()" class="pointer">arrow_back</mat-icon>
+            </div>
+            <div class="col">
+                Add New Quiz
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <mat-form-field>
+                    <input matInput placeholder="Quiz Title" [(ngModel)]="title" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <input matInput placeholder="Estimated Time" [(ngModel)]="time" />
+                </mat-form-field>
+            </div>
+        </div>
+        <ng-container *ngFor="let question of questions, let i = index">
+            <div class="text-secondary pt-2">
+                {{i+1}} - {{question.content}}
+            </div>
+            <div class="mt-2 mb-3 mx-2">
+                <div *ngFor="let answer of question.answers" class="font-italic">
+                    {{answer}}
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <button mat-raised-button class="mt-2" (click)="addQuestion()">Add Question</button>
+        <button mat-raised-button *ngIf="questions.length" class="m-2" (click)="save()">Save</button>
+    </div>
+    <div *ngIf="!addingQuiz && !deliveredOpened">
+        <button class="mt-2" mat-button color="accent" (click)="addQuiz()">Add New Quiz</button>
+        <div class="row m-0">
+            <ng-container *ngFor="let quiz of quizzes">
+                <div *ngIf="quiz.solving" class="col-12 m-2 p-0">
+                    <mat-card>
+                        <h6>{{quiz.title}}</h6>
+                        <mat-card-subtitle>{{quiz.date}}</mat-card-subtitle>
+                        <mat-card-subtitle>Estimated Time: {{quiz.estimatedTime}}</mat-card-subtitle>
+                        <ng-container *ngFor="let question of quiz.questions, let i = index">
+                            <div class="text-secondary pt-2">
+                                {{i+1}} - {{question.content}}
+                            </div>
+                            <div class="mt-2 mb-3 mx-2">
+                                <mat-radio-group aria-label="Select an answer">
+                                    <div *ngFor="let answer of question.answers">
+                                        <mat-radio-button class="mx-2 mt-1 font-italic" [value]="i">
+                                            {{answer}}</mat-radio-button>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </ng-container>
+                        <mat-card-actions>
+                            <button class="mx-1" (click)="save()" color='accent' mat-raised-button>
+                                Save</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div *ngIf="!quiz.solving" class="col-md-4 m-2 p-0">
+                    <mat-card>
+                        <h6>{{quiz.title}}</h6>
+                        <mat-card-subtitle>{{quiz.date}}</mat-card-subtitle>
+                        <mat-card-subtitle>Estimated Time: {{quiz.estimatedTime}}</mat-card-subtitle>
+                        <mat-card-actions>
+                            <button class="mx-1" (click)="openDelivered(quiz)" color='accent' mat-button>
+                                {{quiz.deliveredNum || 0}} Delivered
+                                <span *ngIf="quiz.newDeliveredNum">, {{quiz.newDeliveredNum}} new</span>
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="deliveredOpened">
+        <div class="pb-3 text-secondary font-weight-bold row">
+            <div class="col-auto">
+                <mat-icon (click)="back()" class="pointer">arrow_back</mat-icon>
+            </div>
+            <div class="col">
+                {{currentQuiz.title}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="pt-2" *ngIf="!currentQuiz.delivered">No delivered quizzes</div>
+        <ng-container *ngFor="let quiz of currentQuiz.delivered">
+            <div class="pb-1">
+                <div class="row py-3">
+                    <div class="col-auto">
+                        <img [src]='quiz.img' class="tiny-profile-img" />
+                    </div>
+                    <div class="col">
+                        <div class="text-secondary my-2">
+                            <span>{{quiz.name}}</span>
+                            <span class="mx-2 font-weight-bold text-dark">{{quiz.score}}</span>
+                        </div>
+                        <div *ngFor="let answer of quiz.answers, let i = index" class="py-2">
+                            <div>{{currentQuiz.questions[i].content}}</div>
+                            <div [style.color] = "answer === currentQuiz.questions[i].rightAnswer ? '#090' : '#900'">
+                                {{currentQuiz.questions[i].answers[answer]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <div>
+            <button mat-button color="accent" (click)="back()">Back</button>
+        </div>
+    </div>
+</div>

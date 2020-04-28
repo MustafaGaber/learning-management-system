@@ -1,0 +1,35 @@
+<mat-nav-list>
+    <div class="text-center px-4 py-3">
+        <div>
+            <img class="profile-img"
+                src="https://puzl-production.s3.amazonaws.com/files/uploads/files/001/684/988/original/john_martin.jpg?1538144071" />
+        </div>
+        <div class="text-muted font-weight-lighter mt-2">
+            Ahmed AbdelRahman
+        </div>
+        <div class="text-muted font-weight-lighter">
+            Science Teacher
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mat-expansion-panel mat-elevation-z0">
+        <div [style.color]="url ==='home' || url === '' ? '#a33' : '#555'"
+            [style.background]="url ==='home' || url === '' ? '#eee' : '#fff'" (click)="navigateTo('home')"
+            class="mat-expansion-panel-header pointer d-flex flex-row align-items-center p-3">
+            <mat-icon aria-hidden="true" aria-label="home">home</mat-icon>
+            <div class="px-1">Home</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mat-expansion-panel mat-elevation-z0">
+        <div [style.color]="url==='courses' || url==='course-details' ? '#a33' : '#555'"
+            [style.background]="url==='courses' || url==='course-details' ? '#eee' : '#fff'"
+            (click)="navigateTo('courses')"
+            class="mat-expansion-panel-header pointer d-flex flex-row align-items-center p-3">
+            <mat-icon>menu_book</mat-icon>
+            <div class="px-1">My courses</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+</mat-nav-list>

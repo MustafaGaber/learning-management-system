@@ -77,6 +77,6 @@ export class CourseContentComponent implements OnInit {
   openVideo(section, video) {
     this.coursesService.currentSection = section;
     this.coursesService.currentVideo = video;
-    this.router.navigateByUrl('player');
+    this.router.navigate(['student', 'player']);
   }
 }

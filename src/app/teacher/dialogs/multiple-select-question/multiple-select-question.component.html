@@ -1,0 +1,22 @@
+<div>
+    <h1 mat-dialog-title>{{data.action === 'edit' ? 'Edit' : 'Add'}} Question</h1>
+    <mat-dialog-content>
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Question" [(ngModel)]="question" />
+        </mat-form-field>
+        <mat-radio-group [(ngModel)]="rightChoice">
+            <div *ngFor = "let answer of answers, let i = index">
+                <mat-radio-button class="mx-2 mt-1" [value]="i">
+                    <mat-form-field>
+                        <input matInput placeholder="Choice {{i+1}}" [(ngModel)]="answer.value" name="answer{{i}}"/>
+                    </mat-form-field>
+                </mat-radio-button>
+            </div>         
+        </mat-radio-group>
+    </mat-dialog-content>
+
+    <div class="text-center">
+        <button mat-raised-button class="mx-1" color="accent" (click)="submit()">OK</button>
+        <button mat-raised-button class="mx-1" color="accent" (click)="dismiss()">Cancel</button>
+    </div>
+</div>

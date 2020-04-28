@@ -168,9 +168,9 @@ export class LiveClassComponent implements AfterViewInit, OnDestroy {
   }
 
   sendComment() {
-    const date = new Date('2010-08-05');
+    const date = new Date();
     const y = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
-    const m = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
+    const m = new Intl.DateTimeFormat('en', { month: 'numeric' }).format(date);
     const d = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
     if (this.comment && this.comment.trim()) {
       this.comments.unshift(

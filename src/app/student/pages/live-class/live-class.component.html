@@ -39,10 +39,10 @@
         </div>
     </div>
     <div class="container">
-        <button class="my-2" mat-button (click)="addComment()">{{commenting ? 'Cancel' : 'Add a comment'}}</button>
+        <button class="my-2" mat-button (click)="addComment()">{{commenting ? 'Cancel' : 'Ask a question'}}</button>
         <div *ngIf="commenting" class="mb-2">
             <mat-form-field class="mt-2 w-100">
-                <textarea [(ngModel)]="comment" matInput placeholder="Type your comment"></textarea>
+                <textarea [(ngModel)]="comment" matInput placeholder="Type your question"></textarea>
             </mat-form-field>
             <div class="row">
                 <div class="col"></div>
@@ -71,31 +71,3 @@
         </ng-container>
     </div>
 </div>
-
-
-<!--div class="h-100 bg-dark">
-    <div class="continer h-100 d-flex flex-column">
-        <div class="flex-grow-1">
-            <div id="agora_local" class="w-100 h-100"> </div>
-            <div class="w-100 controls">
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <mat-icon color="accent" aria-hidden="true" aria-label="camera">videocam_off</mat-icon>
-                        <div></div>
-                    </div>
-                    <div class="col-auto">
-                        <mat-icon color="accent" aria-hidden="true" aria-label="camera">mic_off</mat-icon>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-            <iframe class="w-100 h-100" allowfullscreen src="https://www.youtube-nocookie.com/embed/Qph7iTqJwXM?autoplay=1&showinfo=0&controls=0&iv_load_policy=3">
-            </iframe>
-</div>
-<div class="row m-0 streams">
-    <div *ngFor='let stream of remoteStreams' class="col-auto p-0">
-        <div class="stream" id="{{stream}}"></div>
-    </div>
-</div>
-</div>
-</div-->

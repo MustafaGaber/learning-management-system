@@ -5,7 +5,7 @@
     <mat-drawer-content>
         <app-header title="My Todo List"></app-header>
         <div class="contianer">
-            <button class="mt-3 mx-3" mat-button (click)="add()">Add new item</button>
+            <button class="mt-3 mx-3" mat-button color="accent" (click)="add()">Add new item</button>
             <mat-card class="m-3" *ngIf="items.length">
                 <mat-list role="list">
                     <mat-list-item *ngFor="let item of items" role="listitem">

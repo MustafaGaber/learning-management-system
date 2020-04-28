@@ -1,0 +1,13 @@
+<div>
+    <h1 mat-dialog-title>{{data.action === 'edit' ? 'Edit' : 'Add'}} Section</h1>
+    <mat-dialog-content>
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Section Name" [(ngModel)]="name" />
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <div class="text-center">
+        <button mat-raised-button class="mx-1" color="accent" (click)="submit()">OK</button>
+        <button mat-raised-button class="mx-1" color="accent" (click)="dismiss()">Cancel</button>
+    </div>
+</div>

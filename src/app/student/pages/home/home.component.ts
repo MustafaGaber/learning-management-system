@@ -15,10 +15,15 @@ export class HomeComponent implements OnInit {
   onResize(event) {
     this.largeScreen = event.target.innerWidth >= 600;
   }
-  constructor(private coursesService: CoursesService, private router: Router) { }
+  constructor(private coursesService: CoursesService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-
+    if (!this.coursesService.messageShowed) {
+      setTimeout(() => {
+        this.openSnackBar('Science class is live now', 'Go to class');
+        this.coursesService.messageShowed = true;
+      }, 2000);
+    }
   }
 
   openAssignment(courseName) {
@@ -28,14 +33,21 @@ export class HomeComponent implements OnInit {
       this.coursesService.setCurrentCourse({ name: 'English', id: '3' });
     }
     this.coursesService.selectedIndex = 2;
-    this.router.navigateByUrl('course-details');
+    this.router.navigate(['student', 'course-details']);
   }
 
   openQuiz() {
     this.coursesService.setCurrentCourse({ name: 'Science', id: '1' });
     this.coursesService.selectedIndex = 3;
-    this.router.navigateByUrl('course-details');
+    this.router.navigate(['student', 'course-details']);
   }
 
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+    }).onAction().subscribe(() => {
+      this.router.navigate(['student', 'live']);
+    });
+  }
 }

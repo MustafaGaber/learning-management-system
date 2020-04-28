@@ -13,15 +13,10 @@ export class SideNavComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
-    /*this.router.events.subscribe((val: any) => {
-      if (val && val.url) {
-        this.url = val.url.slice(1);
-        console.log(val);
-      }
-    });*/
+
   }
 
   navigateTo(url) {
-    this.router.navigateByUrl(url);
+    this.router.navigate(['student', url]);
   }
 }

@@ -1,0 +1,16 @@
+<div>
+    <h1 mat-dialog-title>{{data.action === 'edit' ? 'Edit' : 'Add'}} Homework</h1>
+    <mat-dialog-content>
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Title" [(ngModel)]="title" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <textarea [(ngModel)]="content" matInput placeholder="Content"></textarea>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <div class="text-center">
+        <button mat-raised-button class="mx-1" color="accent" (click)="submit()">OK</button>
+        <button mat-raised-button class="mx-1" color="accent" (click)="dismiss()">Cancel</button>
+    </div>
+</div>

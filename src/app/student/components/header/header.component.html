@@ -3,17 +3,23 @@
     <span class="spacer"></span>
     <mat-icon *ngIf="!hideLive" class="px-4 pointer" matTooltip="Go to science live class" (click)="navigateTo('live')"
         aria-hidden="true" color='warn'>ondemand_video</mat-icon>
-    <mat-icon class="px-4 pointer" matTooltip="Home" (click)="navigateTo('')" aria-hidden="true">home</mat-icon>
-    <mat-icon class="px-4 pointer" [matMenuTriggerFor]="chatMenu"
-        matTooltip="Messages" aria-hidden="true">chat</mat-icon>
-    <mat-icon [matMenuTriggerFor]="notificationsMenu" class="px-4 pointer" [matBadge]="notificationiBadges" matBadgeColor="warn" matBadgePosition="above after"
-        matTooltip="Notifications" aria-hidden="true" (click)="clearNotificationBadges()">notifications</mat-icon>
+    <mat-icon class="px-4 pointer" matTooltip="Home" (click)="navigateTo('home')" aria-hidden="true">home</mat-icon>
+    <mat-icon class="px-4 pointer" [matMenuTriggerFor]="chatMenu" matTooltip="Messages" aria-hidden="true">chat
+    </mat-icon>
+    <mat-icon [matMenuTriggerFor]="notificationsMenu" class="px-4 pointer" [matBadge]="notificationiBadges"
+        matBadgeColor="warn" matBadgePosition="above after" matTooltip="Notifications" aria-hidden="true"
+        (click)="clearNotificationBadges()">notifications</mat-icon>
+    <mat-icon class="px-4 pointer" [matMenuTriggerFor]="accountMenu" matTooltip="My Account" aria-hidden="true">person
+    </mat-icon>
     <mat-menu #notificationsMenu="matMenu" yPosition="below">
-        <div mat-menu-item routerLink="live" class="text-danger">Science class is live now</div>
+        <div mat-menu-item routerLink="/student/live" class="text-danger">Science class is live now</div>
         <div mat-menu-item>Math live class will start at 5pm</div>
         <div mat-menu-item>History live class will start at 7:30pm</div>
     </mat-menu>
     <mat-menu #chatMenu="matMenu" yPosition="below">
-        <div mat-menu-item>You have no messages</div>
+        <div mat-menu-item>No new messages</div>
+    </mat-menu>
+    <mat-menu #accountMenu="matMenu" yPosition="below">
+        <div mat-menu-item (click)="logout()">Logout</div>
     </mat-menu>
 </mat-toolbar>
